@@ -7,30 +7,46 @@ document.getElementById("app").innerHTML = `
 </div>
 `;
 
-//Function Declaration
-// Hoisted
-// function sayHi() {
-//   return console.log('hi');
+const newArray = ['hi', 'scott', 'newItem', 'spreadftw'];
+const [a, b, ...c] = newArray;
+// const a = newArray[0];
+// const b = newArray[1];
+
+console.log(c);
+
+// const person = {
+//   name: 'Scott',
+//   age: 32,
+//   job: 'Web Dev'
 // };
 
-//Function Expression
-//Anon, not named
-//Not hoisting
-//Passed around or used
-// const sayHi = function() {
-//   return console.log('hi');
-// };
+// const makePerson = (name, age, job) => {
+//   return {
+//     name: name,
+//     age: age,
+//     job: job
+//   }
+// }
 
-//Named function
-// const sayHi = function sayHi() {
-//   return console.log('hi');
-// };
+const makePerson = (name, age, job) => {
+  return {
+    name,
+    age,
+    job
+  };
+};
 
-// const sayHi = () => {
-//   return console.log('hi');
-// };
+const dev = makePerson('Scott', 32, 'Web Dev');
+//X const name = dev.name;
+//X const devName = dev.name;
+const { name, ...rest } = dev;
 
-// const sayHi = () => (console.log('hi'));
+//this.props.names
+//const { names } = this.props;
+//...this.props
+
+console.log(name, rest);
+
 const sayHi = () => console.log('hi');
 
 sayHi();
