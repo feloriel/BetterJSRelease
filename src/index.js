@@ -7,11 +7,20 @@ document.getElementById("app").innerHTML = `
 </div>
 `;
 
-const makePerson = ({firstName, age, lastName, job}) => {
+//Consistency Is King
+//Clear, searchable & obvious
+//Var names that make sense
+
+//Constant variables uppercase syntax common
+const BASE_SALARY = 16000;
+const SALARY_MULTIPLIER = 4;
+
+const makePerson = ({ firstName, age, lastName, job }) => {
   return {
     name: firstName + ' ' + lastName,
     age,
-    job
+    job,
+    salary: BASE_SALARY * SALARY_MULTIPLIER
   };
 };
 
@@ -22,8 +31,25 @@ const dev = makePerson({
   job: 'Web Dev'
 });
 
-console.log(dev);
+//DO NOT DO
+// const hireDev = ({ devInfo }) => {
+//   const hiredDevInfo = {
+//     hired: true,
+//     ...devInfo
+//   }
+//   return hiredDevInfo;
+// }
 
-const sayHi = () => console.log('hi');
+//Correct
+const hireDev = ({ dev }) => {
+  const hiredDev = {
+    hired: true,
+    ...dev
+  };
+  return hiredDev;
+};
 
-sayHi();
+const ytd = 100000; //Sales year to date
+const salesYearToDate = 100000;
+
+console.log(hireDev({ dev }));
