@@ -7,11 +7,36 @@ document.getElementById("app").innerHTML = `
 </div>
 `;
 
-//Consistency Is King
-//Clear, searchable & obvious
-//Var names that make sense
+//Immutable vs Mutable
+//can't be changed vs can be changed
+//isn't changed vs changed
 
-//Constant variables uppercase syntax common
+//Pure Functions
+//Always return the same thing with the same input
+
+//Pure
+const addTwo = (x) => x + 2;
+console.log(addTwo(2));
+
+//NOT PURE!!
+let multi = 3; //External State
+const addThree = (x) => x + multi;
+console.log(addThree(2));
+multi = 4;
+console.log(addThree(2));
+multi = 6;
+console.log(addThree(2));
+
+//NOT PURE!!
+let mult = 2; //External State
+const addFour = (x) => {
+  mult += 2;
+  return x + mult;
+};
+console.log(addFour(2));
+console.log(addFour(2));
+console.log(addFour(2));
+
 const BASE_SALARY = 16000;
 const SALARY_MULTIPLIER = 4;
 
@@ -31,16 +56,6 @@ const dev = makePerson({
   job: 'Web Dev'
 });
 
-//DO NOT DO
-// const hireDev = ({ devInfo }) => {
-//   const hiredDevInfo = {
-//     hired: true,
-//     ...devInfo
-//   }
-//   return hiredDevInfo;
-// }
-
-//Correct
 const hireDev = ({ dev }) => {
   const hiredDev = {
     hired: true,
