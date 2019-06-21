@@ -7,45 +7,22 @@ document.getElementById("app").innerHTML = `
 </div>
 `;
 
-const newArray = ['hi', 'scott', 'newItem', 'spreadftw'];
-const [a, b, ...c] = newArray;
-// const a = newArray[0];
-// const b = newArray[1];
-
-console.log(c);
-
-// const person = {
-//   name: 'Scott',
-//   age: 32,
-//   job: 'Web Dev'
-// };
-
-// const makePerson = (name, age, job) => {
-//   return {
-//     name: name,
-//     age: age,
-//     job: job
-//   }
-// }
-
-const makePerson = (name, age, job) => {
+const makePerson = ({firstName, age, lastName, job}) => {
   return {
-    name,
+    name: firstName + ' ' + lastName,
     age,
     job
   };
 };
 
-const dev = makePerson('Scott', 32, 'Web Dev');
-//X const name = dev.name;
-//X const devName = dev.name;
-const { name, ...rest } = dev;
+const dev = makePerson({
+  firstName: 'Scott',
+  lastName: 'Tolinski',
+  age: 32,
+  job: 'Web Dev'
+});
 
-//this.props.names
-//const { names } = this.props;
-//...this.props
-
-console.log(name, rest);
+console.log(dev);
 
 const sayHi = () => console.log('hi');
 
