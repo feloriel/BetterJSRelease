@@ -7,64 +7,29 @@ document.getElementById("app").innerHTML = `
 </div>
 `;
 
-//Immutable vs Mutable
-//can't be changed vs can be changed
-//isn't changed vs changed
+const cart = [10, 5, 15];
 
-//Pure Functions
-//Always return the same thing with the same input
+const SHIPPING_COST = 10;
 
-//Pure
-const addTwo = (x) => x + 2;
-console.log(addTwo(2));
+const fakeAPICharge = total => true;
+const fakeSendRecipt = total => true;
 
-//NOT PURE!!
-let multi = 3; //External State
-const addThree = (x) => x + multi;
-console.log(addThree(2));
-multi = 4;
-console.log(addThree(2));
-multi = 6;
-console.log(addThree(2));
+const getSubTotal = cart => cart.reduce((tempTotal, item) => tempTotal + item);
+const getTotal = subTotal => subTotal + SHIPPING_COST;
+const sendRecipt = ({ email, total }) => 
+  fakeSendRecipt({
+    email,
+    total
+  });
 
-//NOT PURE!!
-let mult = 2; //External State
-const addFour = (x) => {
-  mult += 2;
-  return x + mult;
-};
-console.log(addFour(2));
-console.log(addFour(2));
-console.log(addFour(2));
-
-const BASE_SALARY = 16000;
-const SALARY_MULTIPLIER = 4;
-
-const makePerson = ({ firstName, age, lastName, job }) => {
-  return {
-    name: firstName + ' ' + lastName,
-    age,
-    job,
-    salary: BASE_SALARY * SALARY_MULTIPLIER
-  };
+const checkout = cart => {
+  const subTotal = getSubTotal(cart);
+  const total = getTotal(subTotal);
+  const orderSuccess = fakeAPICharge(total);
+  if (orderSuccess) {
+    sendRecipt({ email: 'fakeemail@gmail.com', total })
+  }
+  return orderSuccess;
 };
 
-const dev = makePerson({
-  firstName: 'Scott',
-  lastName: 'Tolinski',
-  age: 32,
-  job: 'Web Dev'
-});
-
-const hireDev = ({ dev }) => {
-  const hiredDev = {
-    hired: true,
-    ...dev
-  };
-  return hiredDev;
-};
-
-const ytd = 100000; //Sales year to date
-const salesYearToDate = 100000;
-
-console.log(hireDev({ dev }));
+checkout(cart);
