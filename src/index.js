@@ -24,9 +24,22 @@ const addRandomColorToBg = () => {
 addRandomColorToBg();
 
 const newColors = document.getElementById('new-colors');
-//On click allows to attach 1 event
-// newColors.onclick = () => addRandomColorToBg();
-// newColors.onclick = () => console.log('hi');
-
 newColors.addEventListener('click', addRandomColorToBg);
-// newColors.addEventListener('click', () => console.log('hi'));
+
+// Set Interval vs Set Timeout
+// const log = () => console.log('is in timeout');
+// setTimeout(log, 1000);
+// setTimeout(addRandomColorToBg, 5000);
+
+// function timeout(time) {
+//   return new Promise(resolve => setTimeout(resolve, time))
+// };
+
+// await timeout(5000);
+
+//Set Timeout, happens once
+
+//Set Interval, happens over and over
+const interval = setInterval(addRandomColorToBg, 2000);
+//Clear interval stops firing
+newColors.addEventListener('click', () => clearInterval(interval));
