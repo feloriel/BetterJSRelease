@@ -1,45 +1,25 @@
-//Generate random color
-//RGB 0-255
-//Apply to DOM
-//Update color on event
+//Made up code
+//imported chargeCard
+const chargeCard = () => 
+  new Promise((resolve, reject) => {
+    //card is valid
+    reject('fail!!!');
+    if (true) {
+      return resolve(true);
+    }
+    return reject(false);
+  });
 
-const generateColorValue = () => Math.floor(Math.random() * 256);
+chargeCard().then((val) => {
+  console.log(val);
+}).catch((err) => {
+  console.log(err);
+});
 
-const createColor = () => {
-  const red = generateColorValue();
-  const green = generateColorValue();
-  const blue = generateColorValue();
-  return `rgb(${red}, ${green}, ${blue})`
-};
-
-const applyColorToBody = color => {
-  return document.body.style.backgroundColor = color;
-};
-
-const addRandomColorToBg = () => {
-  const color = createColor();
-  return applyColorToBody(color);
-};
-
-addRandomColorToBg();
-
-const newColors = document.getElementById('new-colors');
-newColors.addEventListener('click', addRandomColorToBg);
-
-// Set Interval vs Set Timeout
-// const log = () => console.log('is in timeout');
-// setTimeout(log, 1000);
-// setTimeout(addRandomColorToBg, 5000);
-
-// function timeout(time) {
-//   return new Promise(resolve => setTimeout(resolve, time))
-// };
-
-// await timeout(5000);
-
-//Set Timeout, happens once
-
-//Set Interval, happens over and over
-const interval = setInterval(addRandomColorToBg, 2000);
-//Clear interval stops firing
-newColors.addEventListener('click', () => clearInterval(interval));
+//Callback hell
+// chargeCard('123412341234', (res) => {
+//   //time to do something
+//   saveToDb(res, () => {
+//     //time to do something else
+//   });
+// });
