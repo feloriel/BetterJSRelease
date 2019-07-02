@@ -61,5 +61,9 @@ const total = simpleShoppingCart.reduce((total, currentPrice) => {
   return total + currentPrice;
 });
 
+console.log([...simpleShoppingCart].reverse());
 console.log(simpleShoppingCart);
-console.log(total);
+
+//[...simpleShoppingCart].reverse()
+//the same as
+//simpleShoppingCart.slice().reverse()
