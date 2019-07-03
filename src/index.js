@@ -1,43 +1,41 @@
-// console.log(this);
+class Team {
+  constructor(name) {
+    this.name = name;
+  }
 
-const logGreeting = function() {
-  console.log(this);
+  celebrate() {
+    console.log('Lets dance');
+  }
 }
 
-const test = {
-  name: 'test',
-  testFunc: function() {
-    this.name = 'Scott';
-    console.log(this);
-  },
-  testFuncTwo: () => {
-    console.log(this, 'arrow func');
-  },
-  testFuncThree: function () {
-    ['hi', 'hello'].map(() => {
-      console.log(this);
-    })
-  },
-  testFuncFour: function () {
-    ['hi', 'hello'].map(() => {
-      console.log(logGreeting.bind(this));
-    })
-  },
-};
+class HockeyTeam extends Team {
+  constructor(name) {
+    super(name);
+    this.type = 'Hockey';
+  }
 
-function team(name) {
-  this.name = name;
-  console.log(this);
+  scoreGoal() {
+    console.log('he shoots, he scores');
+  }
 }
 
-const button = document.getElementById("new-colors");
-button.addEventListener("click", function() {
-  this.innerText = 'Clicked!';
-});
+class FootballTeam extends Team {
+  constructor(name) {
+    super(name);
+    this.type = 'Football';
+  }
 
-// test.testFunc();
-// test.testFuncTwo();
-// test.testFuncThree();
-test.testFuncFour();
-// // team();
-// const wings = new team('Red Wings');
+  touchdown() {
+    console.log('Go for two!');
+  }
+}
+
+const wings = new HockeyTeam('Red Wings');
+const lions = new FootballTeam('Lions');
+
+wings.scoreGoal();
+lions.touchdown();
+wings.celebrate();
+lions.celebrate();
+
+console.log(wings, lions);
