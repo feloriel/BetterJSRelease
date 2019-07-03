@@ -1,4 +1,8 @@
-console.log(this);
+// console.log(this);
+
+const logGreeting = function() {
+  console.log(this);
+}
 
 const test = {
   name: 'test',
@@ -8,7 +12,17 @@ const test = {
   },
   testFuncTwo: () => {
     console.log(this, 'arrow func');
-  }
+  },
+  testFuncThree: function () {
+    ['hi', 'hello'].map(() => {
+      console.log(this);
+    })
+  },
+  testFuncFour: function () {
+    ['hi', 'hello'].map(() => {
+      console.log(logGreeting.bind(this));
+    })
+  },
 };
 
 function team(name) {
@@ -21,7 +35,9 @@ button.addEventListener("click", function() {
   this.innerText = 'Clicked!';
 });
 
-test.testFunc();
-test.testFuncTwo();
-// team();
-const wings = new team('Red Wings');
+// test.testFunc();
+// test.testFuncTwo();
+// test.testFuncThree();
+test.testFuncFour();
+// // team();
+// const wings = new team('Red Wings');
