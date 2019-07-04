@@ -1,8 +1,9 @@
+import greeting, { SEARCH_URL as SEARCH, SEARCH_QUERY } from './consts';
+
 (async () => {
   try {
-    const SEARCH_QUERY = 'Javascript';
-    const SEARCH_URL = 'https://openlibrary.org/search.json?q=';
-    const API_URL =   `${SEARCH_URL}${SEARCH_QUERY}`
+    console.log(greeting);
+    const API_URL = `${SEARCH}${SEARCH_QUERY}`;
 
     const res = await fetch(API_URL);
     const data = await res.json();
